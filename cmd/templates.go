@@ -352,18 +352,6 @@ func NewData(c *conf.Data, logger log.Logger) (*Data, func(), error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	_, err = db.OwnerResolver()
-	if err != nil {
-		return nil, nil, err
-	}
-	_, err = db.BResolver()
-	if err != nil {
-		return nil, nil, err
-	}
-	_, err = db.PointsResolver()
-	if err != nil {
-		return nil, nil, err
-	}
 	_, err = db.BackUpResolver()
 	if err != nil {
 		return nil, nil, err
@@ -380,20 +368,8 @@ func NewData(c *conf.Data, logger log.Logger) (*Data, func(), error) {
 		if err != nil {
 			sqlDB.Close()
 		}
-		sqlDB, err = db.OwnerSource.DB()
-		if err != nil {
-			sqlDB.Close()
-		}
-		sqlDB, err = db.BSource.DB()
-		if err != nil {
-			sqlDB.Close()
-		}
-		sqlDB, err = db.Points.DB()
-		if err != nil {
-			sqlDB.Close()
-		}
 		sqlDB, err = db.BackUp.DB()
-		if err != nil {
+		if err == nil {
 			sqlDB.Close()
 		}
 	}
@@ -585,7 +561,7 @@ consul:
 `
 
 	profileDevTemplate = `server:
-  env: dev
+  env: prod
   name: bd.{{projectName}}.provider
   http:
     addr: 0.0.0.0:8000
@@ -595,25 +571,25 @@ consul:
     timeout: 1s
 data:
   database:
-    master: root:123456@tcp(127.0.0.1:3306)/bd_base
-    slave: root:123456@tcp(127.0.0.1:3306)/bd_base
-    bdb: root:ey9zE4cyQNQl@tcp(114.117.4.43:3306)/shop_base
-    pdb: root:123456@tcp(127.0.0.1:3306)/point_base
-    slavePdb: root:123456@tcp(127.0.0.1:3306)/point_base
-    backup: root:123456@tcp(127.0.0.1:3306)/bd_base_backup
-    slaveBackup: root:123456@tcp(127.0.0.1:3306)/bd_base_backup
+    master: ${DB_MASTER}
+    slave: ${DB_SLAVE}
+    bdb: ${DB_BDB}
+    pdb: ${DB_PDB}
+    slavePdb: ${DB_SLAVE_PDB}
+    backup: ${DB_BACKUP}
+    slaveBackup: ${DB_SLAVE_BACKUP}
   redis:
-    addr: 127.0.0.1:6379
-    password: "123123"
+    addr: ${REDIS_ADDR}
+    password: "${REDIS_PASSWORD}"
     db: 7
     queue: 8
     read_timeout: 0.2s
     write_timeout: 0.2s
 trace:
-  endpoint: http://127.0.0.1:14268/api/traces
-  token: KdydzIcSfIpSxUOmiyjn
+  endpoint: ${TRACE_ENDPOINT}
+  token: ${TRACE_TOKEN}
 consul:
-  address: 127.0.0.1:8500
+  address: ${CONSUL_ADDRESS}
   scheme: http
 `
 

@@ -26,7 +26,7 @@ var newCmd = &cobra.Command{
 
 func init() {
 	newCmd.Flags().StringVarP(&moduleName, "module", "m", "", "module name (e.g., git.code.tencent.com/windo-/bd/services)")
-	newCmd.Flags().StringVarP(&outputDir, "path", "p", "git.code.tencent.com/windo-/bd/services", "output directory for the new project (supports relative and absolute paths)")
+	newCmd.Flags().StringVarP(&outputDir, "path", "p", "", "output directory for the new project (supports relative and absolute paths)")
 }
 
 func runNew(cmd *cobra.Command, args []string) {
