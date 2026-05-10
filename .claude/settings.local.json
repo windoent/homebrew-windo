@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(brew formula *)",
+      "Bash(ruby -c Formula/windo.rb)"
+    ]
+  }
+}
