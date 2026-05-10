@@ -21,15 +21,6 @@ class Windo < Formula
     sha256 "30271cce73115e51c2101971ad4b404c699b3fd9d277dfc11f186b8d85d3e8d2"
   end
 
-  on_macos do
-    on_intel do
-      resource "windo-windows" do
-        url "https://github.com/windoent/homebrew-windo/releases/download/v0.0.1/windo-windows.exe"
-        sha256 "28c83dc55aacc7d5541606933b0b59a6806203102b2514a1d68115fbd5052e97"
-      end
-    end
-  end
-
   def install
     if OS.mac? && Hardware::CPU.intel?
       bin.install "windo-darwin-amd64" => "windo"
