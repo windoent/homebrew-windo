@@ -12,7 +12,12 @@ brew tap windoent/windo https://github.com/windoent/homebrew-windo
 
 # 安装
 brew install windo
+
+# 卸载
+brew untap windoent/windo
 ```
+
+
 
 ### macOS / Linux / Windows (直接下载)
 
