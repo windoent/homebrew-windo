@@ -6,25 +6,25 @@ class Windo < Formula
 
   on_macos do
     on_intel do
-      url "https://github.com/windoent/homebrew-windo/releases/download/v0.0.1/windo-darwin-amd64"
+      url "https://github.com/windoent/homebrew-windo/releases/download/0.0.1/windo-darwin-amd64"
       sha256 "ac9986f44fd699e095652ecd6674d2db81038e97d08d6d023c9eb4d3f046283a"
     end
 
     on_arm do
-      url "https://github.com/windoent/homebrew-windo/releases/download/v0.0.1/windo-darwin-arm64"
+      url "https://github.com/windoent/homebrew-windo/releases/download/0.0.1/windo-darwin-arm64"
       sha256 "000727afd77132af9e120e5a8eb84151a15db945140ff593d7dc0d102ccbed71"
     end
   end
 
   on_linux do
-    url "https://github.com/windoent/homebrew-windo/releases/download/v0.0.1/windo-linux-amd64"
+    url "https://github.com/windoent/homebrew-windo/releases/download/0.0.1/windo-linux-amd64"
     sha256 "30271cce73115e51c2101971ad4b404c699b3fd9d277dfc11f186b8d85d3e8d2"
   end
 
   on_macos do
     on_intel do
       resource "windo-windows" do
-        url "https://github.com/windoent/homebrew-windo/releases/download/v0.0.1/windo-windows.exe"
+        url "https://github.com/windoent/homebrew-windo/releases/download/0.0.1/windo-windows.exe"
         sha256 "28c83dc55aacc7d5541606933b0b59a6806203102b2514a1d68115fbd5052e97"
       end
     end
